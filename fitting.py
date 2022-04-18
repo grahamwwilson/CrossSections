@@ -1,10 +1,8 @@
 # fitting.py
-# The generic code is in GenericFit 
-# and the fit configurations are in the specific cases, like FitBW
-import mymodels
+# 
+# Hide the more Minuit specific code here.
+#
 from scipy import stats
-from iminuit import Minuit
-import MyLeastSquares
 
 def GenericFit(m, lsq, ndata):
 # 1. Global minuit settings. Can be defined after m is constructed.
@@ -68,7 +66,6 @@ def GenericFit(m, lsq, ndata):
     return  
 
 def FixParameters(m, parlist):
-
     for par in parlist:
         m.fixed[par] = True
     return

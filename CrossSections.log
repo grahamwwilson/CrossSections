@@ -23,9 +23,9 @@
  1.44606414 1.3888     1.3348712 ]
  
  
----------------------------
-Running fitting.FitPoly fit
----------------------------
+-----------------------------
+Running fitconfig.FitPoly fit
+-----------------------------
  
 This shows partly how the func_code thing works:
 Namespace(co_argcount=9, co_varnames=('a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'))
@@ -115,7 +115,7 @@ Observed run test p-value (%) =  88.11280118454704
  
  
 ---------------------------
-Running fitting.FitBW fit
+Running fitconfig.FitBW fit
 ---------------------------
  
 This shows partly how the func_code thing works:

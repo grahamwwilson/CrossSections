@@ -14,7 +14,7 @@ def FitBW(ECM, Ratio, dRatio):
     print(" ")
     print(" ")
     print("---------------------------")
-    print("Running fitting.FitBW fit")
+    print("Running fitconfig.FitBW fit")
     print("---------------------------")
     print(" ") 
     
@@ -31,9 +31,9 @@ def FitPoly(x, y, dy):
 
     print(" ")
     print(" ")
-    print("---------------------------")
-    print("Running fitting.FitPoly fit")
-    print("---------------------------")
+    print("-----------------------------")
+    print("Running fitconfig.FitPoly fit")
+    print("-----------------------------")
     print(" ")
     
     lsq = MyLeastSquares.LsqDriver(mymodels.polynomial, x, y, dy)
