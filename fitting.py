@@ -65,43 +65,46 @@ def GenericFit(m, lsq, ndata):
 # 7. Use fitted parameter values to evaluate Run Test statistic
     rpval = lsq.runspvalue(*m.values)  # this is a method in MyLeastSquares.py
     print('Observed run test p-value (%) = ',rpval)
+    return  
+
+def FixParameters(m, parlist):
+
+    for par in parlist:
+        m.fixed[par] = True
     return    
 
-#FIXME DRY principle says we should have an interface to fix a list of parameters
-# rather than repeating this.
-
 def FitBW(ECM, Ratio, dRatio):
+
     print(" ")
     print(" ")
     print("---------------------------")
     print("Running fitting.FitBW fit")
     print("---------------------------")
-    print(" ")    
+    print(" ") 
+    
     lsq = MyLeastSquares.LsqDriver(mymodels.rbw, ECM, Ratio, dRatio)
     m = Minuit(lsq, a0 = 3.0, a1 = 0.0, a2 = 0.0, bw=100.0, mz = 91.1876, gz = 2.4952 )
-    m.fixed["gz"] = True
-    m.fixed["mz"] = True
-    ndata = len(ECM)
-    GenericFit(m, lsq, ndata)
+    FixParameters(m, ["mz", "gz"])
+    GenericFit(m, lsq, len(ECM))
+    
     y_model = mymodels.rbw(ECM, *m.values)
+    
     return y_model
     
 def FitPoly(x, y, dy):
+
     print(" ")
     print(" ")
     print("---------------------------")
     print("Running fitting.FitPoly fit")
     print("---------------------------")
     print(" ")
+    
     lsq = MyLeastSquares.LsqDriver(mymodels.polynomial, x, y, dy)
     m = Minuit(lsq, a0 = 0.2, a1 = 0.0, a2 = 0.0, a3=0.0, a4=0.0, a5=0.0, a6=0.0, a7=0.0, a8=0.0)
-    m.fixed["a2"] = True
-    m.fixed["a4"] = True
-    m.fixed["a5"] = True
-    m.fixed["a6"] = True
-    m.fixed["a7"] = True
-    m.fixed["a8"] = True
-    ndata = len(x)
-    GenericFit(m, lsq, ndata)
+    FixParameters(m, ["a2", "a4", "a5", "a6", "a7", "a8"])    
+    GenericFit(m, lsq, len(x))
+    
     y_model = mymodels.polynomial(x, *m.values)
-    return y_model    
+    
+    return y_model

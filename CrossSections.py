@@ -65,4 +65,7 @@ plotfn.PlotModel2(1, ECM, xsLR_model, r'$e^{-}_{L} e^{+}_{R} \to \mu^{-} \mu^{+}
 plotfn.PlotModel2(2, ECM, xsRL_model, r'$e^{-}_{R} e^{+}_{L} \to \mu^{-} \mu^{+}$', 'Center-of-Mass Energy (GeV)', 'Cross-Section (pb)', 'magenta')
 plotfn.PlotModel2(3, ECM, xsU_model, r'$e^{-} e^{+}\to \mu^{-} \mu^{+}$', 'Center-of-Mass Energy (GeV)', 'Cross-Section (pb)', 'magenta')
 
+print(xsLR_model)
+print(xsRL_model)
+
 plt.show()
