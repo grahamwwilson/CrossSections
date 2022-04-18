@@ -13,7 +13,7 @@ cross-section).
 
 Current fits are a polynomial with 3 free parameters to ALR, and 
 a fit to Rmumu using a BW and polynomial terms with 4 free parameters.
-See mymodels.py and fitting.py for details.
+See mymodels.py, fitconfig,py and fitting.py for details.
 
 The uncertainties in the Whizard cross-section have been scaled up a little 
 using the chi-squared amongst the various iterations. I have seen some 

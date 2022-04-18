@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import pylab
 import plotfn                    # Various customized plotting functions
-import fitting                   # Put all the fit details in here
+import fitconfig                 # Put the fit configurations here
 
 ECM = pylab.genfromtxt('Data/ecm.dat',usecols=(0),unpack=True)
 xsLR, dxsLR, scaleLR = pylab.genfromtxt('Data/mumu_LR.dat',usecols=(2,3,7),unpack=True) # e- (L) e+ (R) cross-sections in fb
@@ -49,9 +49,9 @@ plotfn.PlotDataWithGrid(5, ECM, QED, dQED, r'$e^{-} e^{+}\to \mu^{-} \mu^{+}$', 
 plotfn.PlotDataWithGrid(6, ECM, Ratio, dRatio, r'$e^{-} e^{+}\to \mu^{-} \mu^{+}$', 'Center-of-Mass Energy (GeV)', 'Cross-Section Ratio to QED-only')
    
 # Fit the ALR values vs sqrt(s)
-ALR_model   = fitting.FitPoly(ECM, ALR, dA)
+ALR_model   = fitconfig.FitPoly(ECM, ALR, dA)
 # Fit the ratio of unpolarized cross-section to QED point-like cross-section vs sqrt(s)
-Ratio_model = fitting.FitBW(ECM, Ratio, dRatio)
+Ratio_model = fitconfig.FitBW(ECM, Ratio, dRatio)
 
 plotfn.PlotModel2(4, ECM, ALR_model, r'$e^{-} e^{+}\to \mu^{-} \mu^{+}$', 'Center-of-Mass Energy (GeV)', 'Left-Right Asymmetry', 'magenta')
 plotfn.PlotModel2(6, ECM, Ratio_model, r'$e^{-} e^{+}\to \mu^{-} \mu^{+}$', 'Center-of-Mass Energy (GeV)', 'Cross-Section Ratio to QED-only', 'magenta')
